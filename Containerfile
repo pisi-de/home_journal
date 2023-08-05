@@ -4,6 +4,7 @@ RUN dnf5 install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-r
     dnf5 install -y \
         python3 \
         python3-pip \
+        file-libs \
         ffmpeg && \
     dnf5 clean all -y
 
