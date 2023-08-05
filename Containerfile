@@ -7,5 +7,6 @@ RUN dnf5 install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-r
         ffmpeg && \
     dnf5 clean all -y
 
-RUN pip install --root-user-action=ignore \
+RUN pip install --force-reinstall -v "Pillow==9.5.0" && \
+    pip install --root-user-action=ignore \
         home-journal==0.0.8
