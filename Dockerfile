@@ -8,13 +8,17 @@ RUN dnf5 install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-r
     ffmpeg && \
     dnf5 clean all -y
 
+WORKDIR /app
+COPY src/ /app/
+COPY .config/requirements.in ./
+
 RUN pip install --force-reinstall -v "Pillow==9.5.0" && \
-    pip install --root-user-action=ignore home-journal==0.0.8
+    pip install -r /app/requirements.in
 
 VOLUME [ "/mnt/site" ]
 EXPOSE 8000
 
-ENTRYPOINT ["home-journal"]
+ENTRYPOINT ["python", "-m", "home_journal"]
 CMD ["--log_file", "/mnt/site/hj.log", \
     "--log_level","debug", \
     "--site_directory", "/mnt/site", \
