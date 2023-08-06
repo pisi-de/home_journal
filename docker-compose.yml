@@ -1,0 +1,6 @@
+services:
+  homejournal:
+    build: ./
+    volumes:
+      - ./site:/mnt/site
+    ports: [ 8000:8000 ]
