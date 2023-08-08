@@ -3,4 +3,5 @@ services:
     build: ./
     volumes:
       - ./site:/mnt/site
+      - ./src:/app
     ports: [ 8000:8000 ]
